@@ -37,13 +37,22 @@ RUN apt-get update -qq && apt-get -y --no-install-recommends install \
 # Bioconductor packages I know we'll need
 RUN R -e "options(warn = 2); BiocManager::install(c( \
     'AnnotationHub', \
+    'ConsensusClusterPlus', \
     'ensembldb', \
     'GEOquery', \
     'tximport' \
 ))"
 
 # CRAN/RSPM
-RUN R -e "install.packages(c('R.utils', 'rprojroot'))"
+RUN R -e "install.packages(c( \
+  'caret', \
+  'e1071', \
+  'glmnet', \
+  'kernlab', \
+  'R.utils', \
+  'rprojroot' \
+  'tidymodels' \
+))"
 
 # Snakemake
 ENV SNAKEMAKE_VERSION 5.19.3
