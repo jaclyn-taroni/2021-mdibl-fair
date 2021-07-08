@@ -51,8 +51,12 @@ RUN R -e "install.packages(c( \
   'kernlab', \
   'R.utils', \
   'rprojroot' \
-  'tidymodels' \
+  'tidymodels', \
+  'umap' \
 ))"
+
+# Install PLIER from github
+RUN R -e "remotes::install_github('wgmao/PLIER', ref = 'd9c46d46873444103edb47f29e322b16513fd597')"
 
 # Snakemake
 ENV SNAKEMAKE_VERSION 5.19.3
